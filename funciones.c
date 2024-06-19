@@ -2,7 +2,7 @@
 #include <string.h>
 #include "funciones.h"
 
-void ingresarCliente(char (*clientes)[2][40]) {
+void ingresarCliente(char clientes[][2][40]) {
     for (int i = 0; i < 5; i++) {
         if (strcmp(clientes[i][0], "") == 0) {
             printf("Ingrese nombre del nuevo cliente: ");
@@ -15,13 +15,13 @@ void ingresarCliente(char (*clientes)[2][40]) {
     imprimirClientes(clientes);
 }
 
-void imprimirClientes(char (*clientes)[2][40]) {
+void imprimirClientes(char clientes[][2][40]) {
     for (int i = 0; i < 5; i++) {
         printf("%s\t\t%s\n", clientes[i][0], clientes[i][1]);
     }
 }
 
-void listarPeliculas(char (*peliculas)[4][40]) {
+void listarPeliculas(char peliculas[][4][40]) {
     for (int i = 0; i < 10; i++) {
         if (strcmp(peliculas[i][0], "") != 0) {
             printf("ID: %s, Titulo: %s, Hora: %s, Genero: %s\n", peliculas[i][0], peliculas[i][1], peliculas[i][2], peliculas[i][3]);
@@ -29,7 +29,7 @@ void listarPeliculas(char (*peliculas)[4][40]) {
     }
 }
 
-void buscarporNombre(char (*peliculas)[4][40]) {
+void buscarporNombre(char peliculas[][4][40]) {
     char nombre[40];
     printf("Ingrese el nombre de la pelicula: ");
     scanf("%s", nombre);
@@ -42,7 +42,7 @@ void buscarporNombre(char (*peliculas)[4][40]) {
     printf("Pelicula no encontrada.\n");
 }
 
-void buscarporGenero(char (*peliculas)[4][40]) {
+void buscarporGenero(char peliculas[][4][40]) {
     char genero[40];
     printf("Ingrese el genero de la pelicula: ");
     scanf("%s", genero);
@@ -55,7 +55,7 @@ void buscarporGenero(char (*peliculas)[4][40]) {
     printf("Pelicula no encontrada.\n");
 }
 
-void comprarTicket(char (*peliculas)[4][40], double *precio, char (*clientes)[2][40], int (*reserva)[4]) {
+void comprarTicket(char peliculas[][4][40], double precio[], char clientes[][2][40], int reserva[][4]) {
     int idPelicula, tipoTicket, clienteIndex;
 
     listarPeliculas(peliculas);
@@ -102,7 +102,7 @@ void comprarTicket(char (*peliculas)[4][40], double *precio, char (*clientes)[2]
     printf("No hay espacio para mas reservas.\n");
 }
 
-void verCompras(char (*peliculas)[4][40], double *precio, char (*clientes)[2][40], int (*reserva)[4]) {
+void verCompras(char peliculas[][4][40], double precio[], char clientes[][2][40], int reserva[][4]) {
     printf("Listado de compras:\n");
     for (int i = 0; i < 10; i++) {
         if (reserva[i][0] != -1) {
